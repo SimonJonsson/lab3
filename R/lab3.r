@@ -2,10 +2,6 @@
 name <- "Simon Jonsson"
 liuid <- "simjo241"
 
-#library(markmyassignment)
-#lab_path <- "https://raw.githubusercontent.com/stimaliu/advrcourse/master/labs/tests/lab3.yml"
-#set_assignment(lab_path)
-
 # 1.1 Write the R code
 # 1.1.1 euclidean()
 euclidean <- function(a,b) {
