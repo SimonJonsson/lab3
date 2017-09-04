@@ -2,8 +2,10 @@
 name <- "Simon Jonsson"
 liuid <- "simjo241"
 
-# 1.1 Write the R code
-# 1.1.1 euclidean()
+# args: a,b <- integers
+# Algorithm for finding the greatest common divisor, Euclidean Algorithm
+# returns: an integer which is the gcd(a,b)
+# https://en.wikipedia.org/wiki/Euclidean_algorithm
 euclidean <- function(a,b) {
   t <- 0
   while(b != 0) {
@@ -14,7 +16,10 @@ euclidean <- function(a,b) {
   return (a)
 }
 
-# 1.1.2 * dijkstra()
+# args: df <- data.frame, init_node <- integer
+# Implementation of Dijkstra which solves shortest path problem
+# returns: a list of distances - start node has distance 0
+# https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 dijkstra <- function(df,init_node) {
   stopifnot(is.numeric(init_node) & is.atomic(init_node))
 
