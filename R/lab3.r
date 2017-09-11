@@ -1,12 +1,14 @@
-# Acknowledgement: Henrik Karlsson
 name <- "Simon Jonsson"
 liuid <- "simjo241"
 
-# args: a,b <- integers
-# Algorithm for finding the greatest common divisor, Euclidean Algorithm
-# returns: an integer which is the gcd(a,b)
-# https://en.wikipedia.org/wiki/Euclidean_algorithm
+#' Algorithm for finding the greatest common divisor, Euclidean algorithm
+#'@param a integer
+#'@param b integer
+#'@return an integer which is the gcd(a,b)
+#'@references https://en.wikipedia.org/wiki/Euclidean_algorithm
 euclidean <- function(a,b) {
+  stopifnot(is.numeric(a) & is.numeric(b) &
+            a %% 1 == 0 & b %% 1 == 0)
   t <- 0
   while(b != 0) {
     t <- b
@@ -15,32 +17,39 @@ euclidean <- function(a,b) {
   }
   return (a)
 }
-
-# args: df <- data.frame, init_node <- integer
-# Implementation of Dijkstra which solves shortest path problem
-# returns: a list of distances - start node has distance 0
-# https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
-dijkstra <- function(df,init_node) {
-  stopifnot(is.numeric(init_node) & is.atomic(init_node))
+#' A simple implementation of the Dijkstra algorithm
+#'@param graph a data.frame with three columns v1,v2,w
+#'@param init_node the initial node, an integer
+#'@return a vector of distances
+#'@references https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+dijkstra <- function(graph,init_node) {
+  stopifnot(is.numeric(init_node) &
+              is.atomic(init_node) &
+              is.data.frame(graph) &
+              (length(graph[[1]]) == length(graph[[2]])) &
+              (length(graph[[2]]) == length(graph[[3]])) &
+              all(colnames(graph) == c("v1", "v2", "w")) &
+              length(colnames(graph)) == 3 &
+              (init_node %in% graph[[1]] || init_node %in% graph[[2]])
+  )
 
   Q <- c()
   dist <- c()
   prev <- c()
 
-  for (v in unique(c(df[["v1"]],df[["v2"]]))) {
-    dist[v] <- 10000
+  for (v in unique(c(graph[["v1"]],graph[["v2"]]))) {
+    dist[v] <- Inf
     prev[v] <- (NA)
     Q <- c(Q,v)
   }
 
   dist[init_node] <- 0
-  iter <- 0
   while (length(Q) != 0) {
     u <- Q[which.min(dist[Q])]
     Q <- Q[Q != u]
 
-    for (v in df[["v2"]][df[["v1"]] == u]) {
-      weight <- df[["w"]][df[["v1"]] == v & df[["v2"]] == u]
+    for (v in graph[["v2"]][graph[["v1"]] == u]) {
+      weight <- graph[["w"]][graph[["v1"]] == v & graph[["v2"]] == u]
       alt <- dist[u] + weight
 
       if (alt < dist[v]) {
@@ -51,7 +60,11 @@ dijkstra <- function(df,init_node) {
   }
   return (dist)
 }
-
+#' A data set of a bipartite graph with weights
+#'@docType data
+#'@title wiki_graph
+#'@usage data(wiki_graph)
+#'@format A data frame with vectors v1, v2, w
 wiki_graph <-
   data.frame(v1=c(1,1,1,2,2,2,3,3,3,3,4,4,4,5,5,6,6,6),
              v2=c(2,3,6,1,3,4,1,2,4,6,2,3,5,4,6,1,3,5),
