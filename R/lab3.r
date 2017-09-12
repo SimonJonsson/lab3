@@ -5,7 +5,7 @@ liuid <- "simjo241"
 #'@param a integer
 #'@param b integer
 #'@return an integer which is the gcd(a,b)
-#'@references https://en.wikipedia.org/wiki/Euclidean_algorithm
+#'@references \url{https://en.wikipedia.org/wiki/Euclidean_algorithm}
 euclidean <- function(a,b) {
   stopifnot(is.numeric(a) & is.numeric(b) &
             a %% 1 == 0 & b %% 1 == 0)
@@ -21,7 +21,7 @@ euclidean <- function(a,b) {
 #'@param graph a data.frame with three columns v1,v2,w
 #'@param init_node the initial node, an integer
 #'@return a vector of distances
-#'@references https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+#'@references \url{https://en.wikipedia.org/wiki/Dijkstra's_algorithm}
 dijkstra <- function(graph,init_node) {
   stopifnot(is.numeric(init_node) &
               is.atomic(init_node) &
