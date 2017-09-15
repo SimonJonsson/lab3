@@ -3,6 +3,7 @@
 #'@param b integer
 #'@return an integer which is the gcd(a,b)
 #'@references \url{https://en.wikipedia.org/wiki/Euclidean_algorithm}
+#'@export
 euclidean <- function(a,b) {
   stopifnot(is.numeric(a) & is.numeric(b) &
               a %% 1 == 0 & b %% 1 == 0)
