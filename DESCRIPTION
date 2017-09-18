@@ -1,5 +1,5 @@
 Package: lab3
-Version: 0.65-4
+Version: 1.0
 Date: 2017-05-07
 Title: lab3 code
 Description: Implements the Euclidean Algorithm and Dijkstra.
