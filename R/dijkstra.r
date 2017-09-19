@@ -43,6 +43,7 @@ dijkstra <- function(graph,init_node) {
   }
   return (dist)
 }
+
 #' A data set of a bipartite graph with weights
 #'@docType data
 #'@name wiki_graph
