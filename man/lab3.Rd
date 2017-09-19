@@ -3,7 +3,6 @@
 \docType{package}
 \name{lab3}
 \alias{lab3}
-\alias{lab3-package}
 \title{It's the lab3}
 \description{
   Implementation of Dijkstra and the Euclidean algorithm
