@@ -11,4 +11,3 @@ data(wiki_graph)
 \description{
 A data set of a bipartite graph with weights
 }
-\keyword{datasets}
